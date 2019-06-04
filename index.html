@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <title>Type Crunch Prototype (Vue Framework)</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+	<div class = "container">
+		<h2>Type Crunch (Prototype v1)</h2>
+		<div class="screen" id="screen">
+			<div class="ceiling" v-bind:class="['ceiling']" v-bind:style="computedHeight"></div>
+				<!--MAKE TRIANGLE SPIKES AT THE BOTTOM OF THIS DIV-->
+
+			<div class="input-words" id="current-word">
+				<h2 class="word">{{ title }}</h2>
+				<p>{{ time }}</p>
+				<input v-model="current" v-on:keyup.enter="check" type="text" placeholder="type here">
+			</div>
+
+		</div>
+	</div>
+	<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+	<script src="js/js.js"></script>
+
+	<!--
+	<script src="js/vue.js"></script>
+-->
+</body>
+</html>

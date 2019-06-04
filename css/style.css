@@ -1,0 +1,28 @@
+/*=====GENERAL STYLING=====*/
+h2
+{
+	font-size: 30px;
+}
+.container
+{
+	margin: 0 auto;
+	width: 25%;
+	padding: 10px;
+	font-family: proxima-nova, sans-serif;
+}
+.screen
+{
+	height: 820px;
+	width: 400px;
+	border: 1px solid black;
+}
+.input-words
+{
+	text-align: center;
+}
+/*=====GAME STYLES=====*/
+.ceiling
+{
+	height: 164px; /*This is 820/5*/
+	background-color: black;
+}
