@@ -1,5 +1,4 @@
 Vue.config.devtools = true;
-var height = 164;
 
 new Vue
 ({
@@ -8,6 +7,7 @@ new Vue
 	{
 		title: 'hello',
 		current: '',
+		height: 164,
 		computedHeight:
 		{
 			height: '164px',
@@ -55,10 +55,10 @@ new Vue
 			{
 				this.current = '';
 				this.random(this.words);
-				this.counter();
+				this.count = this.count + 1;
 			}
 			//if height hits it's max (4 mistakes), the game ends
-			else if(height == 656)
+			else if(this.height == 656)
 			{
 				this.mistake = this.mistake + 1;
 				alert('You have exceeded the mistakes limit. Words: ' + this.count + ' Time remaining: ' + this.time);
@@ -66,16 +66,17 @@ new Vue
 			//if the user makes a mistake, the ceiling drops
 			else
 			{
-				height = height + 164;
-				this.computedHeight.height = height + 'px';
+				this.height = this.height + 164;
+				this.computedHeight.height = this.height + 'px';
 				this.mistake = this.mistake + 1;
 			}
 		},
 		//counts number of words typed in
+		/* don't need a method to count, just manually count when needed
 		counter: function()
 		{
 			this.count = this.count + 1;
-		},
+		},*/
 		//the countdown function
 		countdown: function()
 		{

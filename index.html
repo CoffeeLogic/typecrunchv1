@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    
 </head>
 
 <body>
@@ -22,14 +21,17 @@
 				<p>{{ time }}</p>
 				<input v-model="current" v-on:keyup.enter="check" type="text" placeholder="type here">
 			</div>
-
 		</div>
+
+		<div>
+	      <footer>
+	        <p class="footer">&copy; 2019 Vincent Lee</p>
+	      </footer>
+	    </div>
 	</div>
+
 	<script src="https://npmcdn.com/vue/dist/vue.js"></script>
 	<script src="js/js.js"></script>
 
-	<!--
-	<script src="js/vue.js"></script>
--->
 </body>
 </html>
