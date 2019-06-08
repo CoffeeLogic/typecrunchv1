@@ -18,7 +18,7 @@
 
 			<div class="input-words" id="current-word">
 				<h2 class="word">{{ title }}</h2>
-				<p>{{ time }}</p>
+				<p>Time: {{ time }} || Words: {{ count }}</p>
 				<input v-model="current" v-on:keyup.enter="check" type="text" placeholder="type here">
 			</div>
 		</div>

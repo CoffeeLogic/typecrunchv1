@@ -12,19 +12,27 @@ new Vue
 		{
 			height: '164px',
 		},
-		time: 60,
+		time: 59,
 		playing: false,
 		count: 0,
 		mistake: 0,
+		interval: null,
 		words:
 		[
-			"noon","size","war","chapter","was","light",
-			"earth","iron","somebody","family","tight","stick",
-			"pay","surrounded","cover","smooth","theory","better",
-			"satellites","pay","taught","path","everywhere","whom",
-			"involved","vote","our","far","science","combine",
-			"twenty","repeat","sharp","consider","from","whole",
-			"arrive","visitor","highway","pupil","clay","victory"
+			"writing","bus","track","edge","huge","length",
+			"pride","tales","soon","road","parallel","somewhere",
+			"women","independent","parent","face","appropriate","proper",
+			"truth","walk","fell","she","aside","require",
+			"gas","village","base","feathers","natural","loose",
+			"late","instrument","remarkable","naturally","broad","doubt",
+			"grandmother","cream","perhaps","collect","allow","book",
+			"production","shore","letter","cry","prepare","which",
+			"pound","carefully","scene","cover","camera","remarkable",
+			"begun","down","lot","combine","onlinetools","bill",
+			"colony","instead","consist","except","ice","nervous",
+			"wall","board","joy","daily","jump","imagine",
+			"function","visitor","bee","clean","whispered","suddenly",
+			"star","income","result","voice","slide","himself"
 		],
 	},
 	methods:
@@ -42,9 +50,14 @@ new Vue
 			//if first word is hello, doesn't count hello
 			if(this.current == 'hello')
 			{
-				this.init();
+				this.playing = true;
 				this.current = '';
 				this.random(this.words);
+				//sets the interval for timer's countdown
+				this.interval = setInterval(function()
+				{
+					this.countdown();
+				}.bind(this), 1000);			
 			}
 			else if(this.playing == false)
 			{
@@ -61,7 +74,9 @@ new Vue
 			else if(this.height == 656)
 			{
 				this.mistake = this.mistake + 1;
-				alert('You have exceeded the mistakes limit. Words: ' + this.count + ' Time remaining: ' + this.time);
+				alert('You have exceeded the mistakes limit of 4. Words: ' + this.count + ' Time remaining: ' + this.time);
+				this.playing = false;
+				this.reset();
 			}
 			//if the user makes a mistake, the ceiling drops
 			else
@@ -71,12 +86,6 @@ new Vue
 				this.mistake = this.mistake + 1;
 			}
 		},
-		//counts number of words typed in
-		/* don't need a method to count, just manually count when needed
-		counter: function()
-		{
-			this.count = this.count + 1;
-		},*/
 		//the countdown function
 		countdown: function()
 		{
@@ -84,19 +93,23 @@ new Vue
 			{
 				this.time = this.time - 1;
 			}
-			else if(this.time == 0)
+			else if(this.time == 0 || this.playing == false)
 			{
 				this.playing = false;
+				this.check();
+				this.reset();
 			}
 		},
-		//starts the timer
-		init: function()
+		//resets the game without refreshing the page
+		reset: function()
 		{
-			this.playing = true;
-			setInterval(function()
-			{
-				this.countdown();
-			}.bind(this), 1000);
+			clearInterval(this.interval);
+			this.time = 59;
+			this.count = 0;
+			this.title = 'hello';
+			this.current = '';
+			this.height = 164;
+			this.computedHeight.height = this.height + 'px';
 		},
 	},
 });
